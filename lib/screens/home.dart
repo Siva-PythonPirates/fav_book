@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../provider/favorites_provider.dart';
 import 'book.dart';
-
+import 'favorites.dart';
 
 import '../main.dart';
 
@@ -37,8 +39,13 @@ class _BooksPageState extends State<BooksPage> {
     ),
   ];
 
+
+
   @override
   Widget build(BuildContext context) {
+    final favoritesProvider = Provider.of<FavoritesProvider>(context);
+    favoritesProvider.loadFavorites();
+    
     return Scaffold(
       appBar: AppBar(
         title: Text('Books'),
